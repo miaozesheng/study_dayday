@@ -1,4 +1,4 @@
-package test.general_test.stream_test;
+package test.stream_test;
 
 /**
  * @author Administrator
@@ -9,7 +9,7 @@ public class StreamTest {
      *  1.流的创建方式
      *  2.流的常见方法
      *  3.流的终结方法
-     *
+     * 666
      */
     public static void main(String[] args) {
 
