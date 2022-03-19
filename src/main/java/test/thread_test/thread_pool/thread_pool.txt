@@ -1,0 +1,51 @@
+什么是线程池?
+线程池就是一个可以复用线程的技术.
+
+不使用线程池的问题?
+如果用户每次发起一个请求,后台就要创建一个新线程来处理,下次新任务来了又要创建新线程,而创建线程的开销是很大的,这样会严重影响系统的性能.(内存,cpu)
+
+线程池的工作原理:
+有几个核心线程放到线程池里边,一直不死亡,用来处理线程任务.另外有一个等待队列,每次有新任务来了就放入其中,等核心线程挨个处理.
+
+谁代表线程池:
+jdk1.5之后提供了代表线程池的接口 ExecutorService
+
+如何得到线程池对象?
+方式一:使用ExecutorService的实现类ThreadPoolExecutor自创建一个线程池对象
+方式二:使用Executors(线程池的工具类)调用方法返回不同特点的线程池
+
+线程池的核心参数
+int corePoolSize, 核心线程,也就是用来处理任务的线程 不能小于零
+int maximumPoolSize, 指定线程池可支持的最大线程数 最大数据>=核心线程数量
+long keepAliveTime, 零时线程的最大存活时间 不能小于0
+TimeUnit unit, 指定存活时间的具体单位 秒 分 时 天
+BlockingQueue<Runnable> workQueue, 指定任务的队列,就是要处理任务的排队队列 不能为null
+ThreadFactory threadFactory, 指定用哪个线程工厂创建线程 threadFactory 不能为null
+RejectedExecutionHandler handler 指定线程忙 任务满的时候,新任务来了怎么办,就是核心线程都在处理任务,任务队列已经排满,那多余的任务给个拒绝策略 不能为null
+
+临时线程的创建时机?
+新任务提交是发现核心线程都在忙,任务队列也满了,并且还可以创建临时线程,此时才会创建临时线程
+
+什么时候会开始拒绝任务?
+核心线程和临时线程都在忙,任务队列也满了,新的任务过来的时候才会开始任务拒绝.
+
+ *  // 创建一个线程池,线程数据随着任务的增加而增加,如果线程任务执行完毕且空闲了一段时间则会被回收掉
+ *         Executors.newCachedThreadPool();
+ *         // 创建一个固定线程数量的线程池,如果某个线程因为执行异常而结束,那么线程会补充一个新的线程替代它
+ *         Executors.newFixedThreadPool(5);
+ *         // 创建只有一个线程的线程池对象,如果该线程出现异常而结束,那么线程池会补充一个新线程
+ *         Executors.newSingleThreadExecutor();
+ *         // 创建一个线程池,可以实现在给定的延迟后运行任务,或者定期执行任务
+ *         Executors.newScheduledThreadPool(5);
+ *
+ *
+ *
+ * 存在的问题:在大型并发系统环境中,可能会存在系统风险
+ * newFixedThreadPool
+ * newSingleThreadExecutor
+ * 上述两个线程池任务队列允许的长度是Integer.MAX_VALUE,可能出现oom
+ *
+ *
+ * newCachedThreadPool
+ * newScheduledThreadPool
+ * 上述两个线程池创建的线程数量最大上限是Integer.MAX_VALUE,线程数随着任务数1:1增长,也可能出现oom
