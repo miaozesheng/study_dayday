@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<contractList>
+    <contact id="1" vip="true">
+        <name>大郎</name>
+        <gender>男</gender>
+        <email>666@.com</email>
+    </contact>
+    <contact id="2" vip="false">
+        <name>武松</name>
+        <gender>男</gender>
+        <email>777@.com</email>
+    </contact>
+    <contact id="3" vip="true">
+        <name>金莲</name>
+        <gender>女</gender>
+        <email>888@.com</email>
+    </contact>
+</contractList>

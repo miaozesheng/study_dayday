@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<stduents>
+    <!--
+    Document对象 整个xml文档
+    Element对象 标签 stduent name age
+    Attribute对象 属性 id
+    Text对象 就是张三 23 李四 24 等
+
+    -->
+    <stduent id = "1" vip="true">
+        <name>张三</name>
+        <age>23</age>
+    </stduent>
+
+    <stduent id = "2" vip="false">
+        <name>李四</name>
+        <age>24</age>
+    </stduent>
+</stduents>
