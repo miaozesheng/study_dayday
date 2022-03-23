@@ -15,4 +15,11 @@
         <gender>女</gender>
         <email>888@.com</email>
     </contact>
+    <user>
+        <contact>
+            <info>
+                <name id="999">西门庆</name>
+            </info>
+        </contact>
+    </user>
 </contractList>
