@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- xml注释
+    根标签有且只有一个 这里的student就是根标签
+
+    因为xml中标签使用<> 字符代表的,如果想要使用大于小于号的时候,发现会发生冲突,所以需要用特殊字符来替代这些存在冲突的字符
+
+    < 小于 &lt;
+    > 大于 &gt;
+    &      &amp;
+    '      &apos;
+    "      &quot;
+
+    xml文件中可以存在CDATA区,具体的格式为
+-->
+<student>
+    <name>好看的美女</name>
+    <sex>女</sex>
+    <hobby>爱好</hobby>
+    <info>
+        <age>30</age>
+        <address>北京</address>
+    </info>
+
+    <sql>
+        select * from user where age &lt; 18;
+    </sql>
+
+    <sql>
+       <!--把有冲突的语句放入cdata语句,就不会有冲突了
+       <![CDATA[ 具体语句 ]]>
+       -->
+        <![CDATA[
+           select * from user where sex < 0;
+        ]]>
+    </sql>
+
+</student>

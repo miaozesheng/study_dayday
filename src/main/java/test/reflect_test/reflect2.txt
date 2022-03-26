@@ -1,0 +1,13 @@
+============Student==============
+ss1=null
+ss2=null
+ss3=null
+sfs2=8888
+sfs=6666
+s1=11
+s2=33
+s3=22
+============Teacher==============
+name=miao
+age=24
+flag=true
